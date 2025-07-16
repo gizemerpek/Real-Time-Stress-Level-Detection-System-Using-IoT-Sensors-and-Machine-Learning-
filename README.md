@@ -16,11 +16,15 @@ The system architecture consists of the following major components:
 • Sensor Data Acquisition 
 In this project, three physiological sensors were connected to an ESP32 microcontroller to 
 collect biometric data from human subjects: 
+
 o DHT11 Sensor – Used to measure body temperature and surrounding humidity. 
+
 o GSR (Galvanic Skin Response) Sensor – Captures changes in the skin's electrical 
 conductance, which vary with emotional arousal and stress levels. 
+
 o Heart Pulse Sensor – Monitors the heart rate in beats per minute , which is a key 
 physiological indicator of stress. 
+
 For each participant, a continuous 1-minute session of sensor data was recorded under 
 controlled conditions. During this period, the subject maintained a static posture to minimize 
 motion-related noise, and the ESP32 collected synchronized readings from all three sensors at 
