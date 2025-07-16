@@ -34,8 +34,11 @@ subject or induced in a controlled environment (e.g., calm background for relaxe
 mental arithmetic for stressed state). 
 Each 1-minute data segment collected from a subject was labeled as one of the 
 following: 
+
 • Relaxed 
+
 • Stressed 
+
 • Highly Stressed 
 
 These labeled segments formed the basis of the dataset. Each entry in the dataset 
@@ -95,47 +98,74 @@ These files (stress_rf_model.pkl and label_encoder.pkl) contain the complete str
 learned parameters of the model, enabling them to be loaded instantly in a production 
 environment. 
 • MQTT Communication Workflow: 
+
 o The ESP32 published real-time sensor data to a specific MQTT topic. 
+
 o A Local PC Python client subscribed to this topic, received the data, and 
 passed it to the ML model. 
+
 o The prediction result (label) was then published to another MQTT topic. 
+
 o The ESP32, subscribed to the output topic, triggered a corresponding LED 
 color: 
+
 ▪ Green for "Relaxed" 
+
 ▪ Blue for "Stressed" 
+
 ▪ Red for "Highly Stressed"
 
 System Integration Overview 
 
 • Edge Device: Handles model inference (local PC) 
+
 • ESP32: Collects and sends sensor data; receives prediction and activates actuators 
+
 • MQTT Broker: Enables communication between ESP32 and inference system 
+
 • Pre-trained ML Model: Efficiently classifies emotional state 
+
 This architecture allows for low-latency, scalable, and interpretable deployment of the stress 
 classification model in real-world biofeedback or wellness monitoring applications. 
 
 3. Dataset
    
 • Total Samples: 4020 row 
+
 • Features Collected: 
+
 o Temperature (°C) 
+
 o Humidity (%) 
+
 o GSR Value (Ω or normalized) 
+
 o Heart Rate  
+
 • Labels: 
+
 o Relaxed (0) 
+
 o Stressed (1) 
+
 o Highly Stressed (2) 
+
 • Preprocessing: 
+
 o Missing values were removed. 
+
 o Features were normalized using StandardScaler. 
+
 o The dataset was split into 80% training and 20% testing. 
 
 4. Machine Learning Model
    
 Selected Algorithm: Random Forest Classifier 
+
 Tools Used: Python, Scikit-learn 
+
 Dataset Size: 60-second averaged feature vectors from multiple subjects 
+
 Number of Features: 4 (temperature, humidity, GSR, pulse) 
 
 Feature Engineering Observations: 
@@ -154,11 +184,14 @@ distributions.
 • Real-time Prediction: 
 The model was successfully integrated into the live system. Predictions were made 
 within milliseconds after receiving sensor data via MQTT. 
+
 • Output Control: 
 Based on the predicted label: 
 
 o Green LED: Turned on when the user is relaxed 
+
 o Blue LED: Turned on when the user is under moderate stress 
+
 o Red LED: Turned on when the user is highly stressed 
 
 • System Responsiveness: 
