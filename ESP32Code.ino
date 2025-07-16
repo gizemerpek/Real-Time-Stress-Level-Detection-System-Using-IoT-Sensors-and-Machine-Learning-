@@ -4,16 +4,16 @@
 #include <WiFiClientSecure.h>
 
 // ===== WiFi Settings =====
-const char* ssid = "HUAWEI P40 lite";
-const char* password = "gzmerpek21";
+const char* ssid = "------------";
+const char* password = "-----------";
 
 // ===== EMQX MQTT Settings =====
-const char* mqtt_server = "zd67ac9c.ala.eu-central-1.emqxsl.com";
+const char* mqtt_server = "-----------------";
 const int mqtt_port = 8883;
 const char* mqtt_topic = "stress_detection/subject01";
 const char* mqtt_result_topic = "stress_detection/results";
-const char* mqtt_user = "emqx";
-const char* mqtt_password = "mqtt1234";
+const char* mqtt_user = "---------";
+const char* mqtt_password = "----------";
 
 // ===== Certificate (EMQX TLS root CA) =====
 const char* root_ca = \
